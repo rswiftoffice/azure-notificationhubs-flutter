@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:azure_notificationhubs_flutter/azure_notificationhubs_flutter.dart';
 
 void main() => runApp(MyApp());
@@ -19,14 +16,14 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _anh.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
+      onLaunch: (Map<String, dynamic> notification) async {
+        print('onLaunch: $notification');
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             content: ListTile(
-            title: Text(message['notification']['title']),
-            subtitle: Text(message['notification']['body']),
+            title: Text(notification['data']['title']),
+            subtitle: Text(notification['data']['body']),
             ),
             actions: <Widget>[
               FlatButton(
@@ -36,7 +33,16 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         );
-      }
+      },
+      onResume: (Map<String, dynamic> notification) async {
+        print('onResume: $notification');
+      },
+      onMessage: (Map<String, dynamic> notification) async {
+        print('onMessage: $notification');
+      },
+      onToken: (String token) async {
+        print('onToken: $token');
+      },
     );
   }
 
@@ -45,10 +51,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Azure notification hubs example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('https://github.com/rswiftoffice/azure-notificationhubs-flutter/ & https://github.com/19hours'),
         ),
       ),
     );
