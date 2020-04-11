@@ -79,8 +79,8 @@ Afterwards, you can listen to the notifications and write your own logic to hand
     onMessage: (Map<String, dynamic> notification) async {
       print('onMessage: $notification');
     },
-    onToken: (Map<String, dynamic> notification) async {
-      print('onToken: $notification');
+    onToken: (String token) async {
+      print('onToken: $token');
     },
   );
 ```
@@ -106,6 +106,8 @@ iOS and Android have different payloads. The entire payload will be sent to dart
 ```
 
 ### Android Payload
+
+Send the title as an empty string if it is not required.
 
 ```
 {
