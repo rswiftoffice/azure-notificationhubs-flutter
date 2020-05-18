@@ -1,3 +1,9 @@
+This plugin is not maintained anymore. I am not answering any more questions. I will gladly point to your fork if you are going to continue to work on this.
+
+Regards,
+
+[@19hours](https://github.com/19hours)
+
 # Microsoft Azure Notification Hubs wrapper for Flutter
 
 [![Pub Version](https://img.shields.io/pub/v/azure_notificationhubs_flutter?label=swiftoffice%40pub)](https://pub.dev/packages/azure_notificationhubs_flutter)
