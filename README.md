@@ -35,12 +35,32 @@ To integrate your plugin into the Android part of your app, follow these steps:
     android:value="Endpoint=..." />
 ```
 
-2. Add permissions to `android/app/src/main/AndroidManifest.xml`.
+3. Add permissions to `android/app/src/main/AndroidManifest.xml`.
 
 ```
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+4. Add Maven repository for Microsoft Azure Mobile SDK in `android/build.gradle`
+
+```
+maven {
+    url "https://dl.bintray.com/microsoftazuremobile/SDK"
+}
+```
+In your build.gradle, it will look similar to this:
+```
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
+        }
+    }
+}
 ```
 
 #### iOS Integration
